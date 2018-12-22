@@ -2,24 +2,24 @@
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://pictures/Back.png" type="Texture" id=2]
-[ext_resource path="res://Player1.gd" type="Script" id=3]
-[ext_resource path="res://pictures/Player1.png" type="Texture" id=4]
-[ext_resource path="res://Bar.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Player2.gd" type="Script" id=6]
-[ext_resource path="res://pictures/Player2.png" type="Texture" id=7]
-[ext_resource path="res://Column.tres" type="TileSet" id=8]
+[ext_resource path="res://Column.tres" type="TileSet" id=3]
+[ext_resource path="res://Player1.gd" type="Script" id=4]
+[ext_resource path="res://pictures/Player1.png" type="Texture" id=5]
+[ext_resource path="res://Bar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player2.gd" type="Script" id=7]
+[ext_resource path="res://pictures/Player2.png" type="Texture" id=8]
 [ext_resource path="res://font.tres" type="DynamicFont" id=9]
-
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 16, 16 )
 
 [sub_resource type="GDScript" id=2]
 
 script/source = "extends TileMap
 
 var num = 0"
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
 
 [node name="Game" type="Node2D" index="0"]
 
@@ -33,65 +33,10 @@ scale = Vector2( 32, 18 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Player1" type="KinematicBody2D" parent="." index="1"]
-
-position = Vector2( 32, 288 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
-script = ExtResource( 3 )
-_sections_unfolded = [ "Material", "Pause", "Transform" ]
-
-[node name="Sprite" type="Sprite" parent="Player1" index="0"]
-
-texture = ExtResource( 4 )
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Z Index" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1" index="1"]
-
-shape = SubResource( 1 )
-
-[node name="Bar" parent="Player1" index="2" instance=ExtResource( 5 )]
-
-margin_left = -24.0
-margin_top = -26.0
-margin_right = 24.0
-margin_bottom = 14.0
-min_value = 0.0
-
-[node name="Player2" type="KinematicBody2D" parent="." index="2"]
-
-position = Vector2( 992, 288 )
-rotation = -3.14159
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
-script = ExtResource( 6 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite" type="Sprite" parent="Player2" index="0"]
-
-texture = ExtResource( 7 )
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Z Index" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2" index="1"]
-
-shape = SubResource( 1 )
-
-[node name="Bar" parent="Player2" index="2" instance=ExtResource( 5 )]
-
-margin_left = -24.0
-margin_top = 18.0
-margin_right = 24.0
-margin_bottom = 58.0
-min_value = 0.0
-
-[node name="TileMap" type="TileMap" parent="." index="3"]
+[node name="TileMap" type="TileMap" parent="." index="1"]
 
 mode = 0
-tile_set = ExtResource( 8 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -109,6 +54,61 @@ format = 1
 tile_data = PoolIntArray( -65536, -2147483648, 0, -65535, -2147483648, 0, -65534, -2147483648, 0, -65533, -2147483648, 0, -65532, -2147483648, 0, -65531, -2147483648, 0, -65530, -2147483648, 0, -65529, -2147483648, 0, -65528, -2147483648, 0, -65527, -2147483648, 0, -65526, -2147483648, 0, -65525, -2147483648, 0, -65524, -2147483648, 0, -65523, -2147483648, 0, -65522, -2147483648, 0, -65521, -2147483648, 0, -65520, -2147483648, 0, -65519, -2147483648, 0, -65518, -2147483648, 0, -65517, -2147483648, 0, -65516, -2147483648, 0, -65515, -2147483648, 0, -65514, -2147483648, 0, -65513, -2147483648, 0, -65512, -2147483648, 0, -65511, -2147483648, 0, -65510, -2147483648, 0, -65509, -2147483648, 0, -65508, -2147483648, 0, -65507, -2147483648, 0, -65506, -2147483648, 0, -65505, -2147483648, 0, 65535, -2147483648, 0, 16, -2147483648, 0, 32, -2147483648, 0, 131071, -2147483648, 0, 65537, -2147483648, 0, 65552, -2147483648, 0, 65566, -2147483648, 0, 65568, -2147483648, 0, 196607, -2147483648, 0, 131077, -2147483648, 0, 131078, -2147483648, 0, 131079, -2147483648, 0, 131080, -2147483648, 0, 131088, -2147483648, 0, 131095, -2147483648, 0, 131096, -2147483648, 0, 131097, -2147483648, 0, 131098, -2147483648, 0, 131104, -2147483648, 0, 262143, -2147483648, 0, 196624, -2147483648, 0, 196640, -2147483648, 0, 327679, -2147483648, 0, 262176, -2147483648, 0, 393215, -2147483648, 0, 327686, -2147483648, 0, 327687, -2147483648, 0, 327703, -2147483648, 0, 327704, -2147483648, 0, 327705, -2147483648, 0, 327712, -2147483648, 0, 458751, -2147483648, 0, 393222, -2147483648, 0, 393232, -2147483648, 0, 393241, -2147483648, 0, 393248, -2147483648, 0, 524287, -2147483648, 0, 458754, -2147483648, 0, 458755, -2147483648, 0, 458768, -2147483648, 0, 458780, -2147483648, 0, 458781, -2147483648, 0, 458784, -2147483648, 0, 589823, -2147483648, 0, 524291, -2147483648, 0, 524301, -2147483648, 0, 524302, -2147483648, 0, 524303, -2147483648, 0, 524304, -2147483648, 0, 524316, -2147483648, 0, 524320, -2147483648, 0, 655359, -2147483648, 0, 589827, -2147483648, 0, 589839, -2147483648, 0, 589840, -2147483648, 0, 589841, -2147483648, 0, 589842, -2147483648, 0, 589852, -2147483648, 0, 589856, -2147483648, 0, 720895, -2147483648, 0, 655362, -2147483648, 0, 655363, -2147483648, 0, 655375, -2147483648, 0, 655388, -2147483648, 0, 655389, -2147483648, 0, 655392, -2147483648, 0, 786431, -2147483648, 0, 720902, -2147483648, 0, 720911, -2147483648, 0, 720921, -2147483648, 0, 720928, -2147483648, 0, 851967, -2147483648, 0, 786438, -2147483648, 0, 786439, -2147483648, 0, 786440, -2147483648, 0, 786456, -2147483648, 0, 786457, -2147483648, 0, 786464, -2147483648, 0, 917503, -2147483648, 0, 852000, -2147483648, 0, 983039, -2147483648, 0, 917519, -2147483648, 0, 917536, -2147483648, 0, 1048575, -2147483648, 0, 983045, -2147483648, 0, 983046, -2147483648, 0, 983047, -2147483648, 0, 983048, -2147483648, 0, 983055, -2147483648, 0, 983063, -2147483648, 0, 983064, -2147483648, 0, 983065, -2147483648, 0, 983066, -2147483648, 0, 983072, -2147483648, 0, 1114111, -2147483648, 0, 1048577, -2147483648, 0, 1048591, -2147483648, 0, 1048606, -2147483648, 0, 1048608, -2147483648, 0, 1179647, -2147483648, 0, 1114127, -2147483648, 0, 1114144, -2147483648, 0, 1179648, -2147483648, 0, 1179649, -2147483648, 0, 1179650, -2147483648, 0, 1179651, -2147483648, 0, 1179652, -2147483648, 0, 1179653, -2147483648, 0, 1179654, -2147483648, 0, 1179655, -2147483648, 0, 1179656, -2147483648, 0, 1179657, -2147483648, 0, 1179658, -2147483648, 0, 1179659, -2147483648, 0, 1179660, -2147483648, 0, 1179661, -2147483648, 0, 1179662, -2147483648, 0, 1179663, -2147483648, 0, 1179664, -2147483648, 0, 1179665, -2147483648, 0, 1179666, -2147483648, 0, 1179667, -2147483648, 0, 1179668, -2147483648, 0, 1179669, -2147483648, 0, 1179670, -2147483648, 0, 1179671, -2147483648, 0, 1179672, -2147483648, 0, 1179673, -2147483648, 0, 1179674, -2147483648, 0, 1179675, -2147483648, 0, 1179676, -2147483648, 0, 1179677, -2147483648, 0, 1179678, -2147483648, 0, 1179679, -2147483648, 0 )
 script = SubResource( 2 )
 _sections_unfolded = [ "Cell", "Collision" ]
+
+[node name="Player1" type="KinematicBody2D" parent="." index="2"]
+
+position = Vector2( 32, 288 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 4 )
+_sections_unfolded = [ "Material", "Pause", "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Player1" index="0"]
+
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1" index="1"]
+
+shape = SubResource( 1 )
+
+[node name="Bar" parent="Player1" index="2" instance=ExtResource( 6 )]
+
+margin_left = -24.0
+margin_top = -26.0
+margin_right = 24.0
+margin_bottom = 14.0
+min_value = 0.0
+
+[node name="Player2" type="KinematicBody2D" parent="." index="3"]
+
+position = Vector2( 992, 288 )
+rotation = -3.14159
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 7 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Player2" index="0"]
+
+texture = ExtResource( 8 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2" index="1"]
+
+shape = SubResource( 1 )
+
+[node name="Bar" parent="Player2" index="2" instance=ExtResource( 6 )]
+
+margin_left = -24.0
+margin_top = 18.0
+margin_right = 24.0
+margin_bottom = 58.0
+min_value = 0.0
 
 [node name="Score" type="Label" parent="." index="4"]
 
